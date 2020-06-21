@@ -12,10 +12,10 @@ let candy4 = new Image();
 let name = [candy1, candy2, candy3, candy4]
 shopImg.src = 'Images/CandyShop.jpg'
 cartImage.src = 'Images/backG.png';
-candy1.src = 'Images/candy.jpg'
+candy1.src = 'Images/candy1.png'
 candy2.src = 'Images/candy2.png'
-candy3.src = 'Images/candy4.png'
-candy3.src = 'Images/candy5.png'
+candy3.src = 'Images/candy3.png'
+candy4.src = 'Images/candy4.png'
 
 shopImg.onload = animate;
 cartImage.onload = animate;
@@ -30,29 +30,63 @@ class Game {
         frames,
         id,
         score,
+        max,
+        min
     }) {
         this.candies = candies
         this.frames = frames
         this.id = id
         this.score = score
+        this.max = max
+        this.min = min
+        this.lives = 3
+        this.level = 1
     }
 
-    drawCandies = () => {
-        for (let i = 1; i < 5; i++) {
-            let length = 50;
+    createCandies = () => {
+        for (let i = 0, length = 5; i < name.length; i++) {
             let obj = new Candy({
                 img: name[i],
                 x: length,
-                y: -50,
+                y: -135,
                 width: 135,
-                height: 200,
+                height: 135,
 
             });
             this.candies.push(obj);
-            this.candies[i].drawCandy()
-            length += 185
+            if (i === 1) length += 230
+            length += 140
         }
     }
+    drawCandies = () => this.candies.forEach(candy => candy.drawCandy());
+    removeCandy = () => this.candies.forEach((candy, i) => {
+        canvas.onclick = candy.remove();
+        //candy.onclick = candy.remove();
+    });
+
+
+    generator = () => {
+        let num1 = Math.floor(Math.random() * (this.max - this.min)) + this.min;
+        let num2 = Math.floor(Math.random() * (this.max - this.min)) + this.min;
+        let index = Math.floor(Math.random() * operators.length) % operators.length;
+        let sign = operators[index].sign;
+        let result = operators[index].result(num1, num2);
+        let string = `${num1} ${sign} ${num2} = ?`;
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.fillText(string, canvas.width / 2 - 50, canvas.height / 2 + 140);
+    }
+    drawGame = () => {
+        game.createCandies();
+        //game.drawCandies();
+        //game.generator()
+    }
+    gameOver() {
+        if (this.lives <= 0) {
+            window.cancelAnimationFrame(this.id)
+        }
+    }
+
 }
 
 class Candy {
@@ -70,7 +104,7 @@ class Candy {
         this.height = height;
     }
     drawCandy = () => {
-        this.y += 1
+        this.y += 1;
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }
@@ -105,7 +139,9 @@ let game = new Game({
     candies: [],
     frames: 1,
     id: null,
-    score: 0
+    score: 0,
+    max: 100,
+    min: 0
 })
 
 
@@ -114,34 +150,31 @@ function drawShop() {
     ctx.drawImage(shopImg, 0, 0, canvas.width, canvas.height);
     ctx.drawImage(cartImage, canvas.width / 2 - 160, canvas.height / 2 + 68, 290, 140);
 }
+let framesPerSecond = 10;
 
+/*function animate() {
+    setTimeout(function () {
+        id = window.requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawShop();
+        game.drawGame()
+    }, 10000);
+}*/
 
-function generator() {
-    let num1 = Math.floor(Math.random() * (max - min)) + min;
-    let num2 = Math.floor(Math.random() * (max - min)) + min;
-    let index = Math.floor(Math.random() * operators.length) % operators.length;
-    let sign = operators[index].sign;
-    let result = operators[index].result(num1, num2);
-    let string = `${num1} ${sign} ${num2}`;
-    console.log(result);
-    return [string, result]
-}
-
-function drawExpression() {
-    ctx.fillStyle = "black";
-    ctx.textAlign = "center";
-    let arr = generator();
-    ctx.fillText(arr[0], canvas.width / 2, canvas.height / 2);
-}
 
 
 function animate() {
-    id = window.requestAnimationFrame(animate);
+    setTimeout(function () {
+        id = window.requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        game.drawGame();
+        game.generator();
+    }, 10);
+
+
+    window.requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawShop();
-    game.drawCandies()
-    if (frames % 1000 === 0) {
-
-    }
-    frames++;
-}
+    game.drawCandies();
+    game.removeCandy()
+};

@@ -3,8 +3,14 @@ const ctx = canvas.getContext('2d');
 let id = null;
 let start = document.querySelector('#start');
 let finish = document.querySelector('#finish');
-start.onclick = gameStart;
+start.onclick = () => {
+    document.querySelector('#intro').remove();
+    gameStart();
+
+}
 let score = 0
+let animateid = null;
+let candyid = null;
 
 
 
@@ -23,6 +29,8 @@ function gameStart() {
     let candy4 = new Image();
     let music = new Audio();
 
+
+
     let name = [candy1, candy2, candy3, candy4]
     shopImg.src = 'Images/CandyShop.jpg'
     cartImage.src = 'Images/backG.png';
@@ -32,13 +40,9 @@ function gameStart() {
     candy4.src = 'Images/candy4.png'
     music.src = 'Images/musicBack.mp3'
 
+
     shopImg.onload = animate;
-    cartImage.onload = animate;
-    candy1.onload = animate;
-    candy2.onload = animate;
-    candy3.onload = animate;
-    candy4.onload = animate;
-    music.onload = animate;
+
 
 
     //-----Class Game---
@@ -112,7 +116,7 @@ function gameStart() {
             this.num = num;
         }
         drawCandy = () => {
-            this.y += 0.1;
+            this.y += 1;
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
             ctx.fillText(this.num, this.x + 34, this.y + 70);
             ctx.style
@@ -151,14 +155,17 @@ function gameStart() {
         max: 100,
         min: 0
     });
-
+    music.play();
+    game.createCandies();
     //========================ERASE==========================================================
     function erase() {
         document.querySelector('#score').remove();
         clearInterval(id);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
         music.pause();
-        music.src = ''
+        music.src = '';
+        //cancelAnimationFrame(candyid);
+        cancelAnimationFrame(animateid);
     }
     finish.onclick = erase
 
@@ -215,15 +222,14 @@ function gameStart() {
 
     //-----Animation-----
     function animate() {
-        window.requestAnimationFrame(animate);
+        animateid = window.requestAnimationFrame(animate);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawShop();
-        music.play()
-        ctx.font = "45px bolder Stencil Std, fantasy";
+        ctx.font = "45px Concert One cursive";
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'white'
         ctx.strokeText(game.equipment, canvas.width / 2 - 72, canvas.height / 2 + 145);
-
+        console.log("Hello");
         if (game.candies[0] && game.candies[0].y >= canvas.height) {
             if (game.lives - 1 >= 0) hearts[game.lives - 1].remove()
             game.lives -= 1;
@@ -237,8 +243,10 @@ function gameStart() {
         }
         game.drawCandies();
         game.removeCandy();
+        //game.createCandies();
         if (Number(frames) % 1000 === 0) {
-            document.querySelector('#score span').innerText = score
+            let scoreBoard = document.querySelector('#score span');
+            scoreBoard ? scoreBoard.innerText = score : scoreBoard.innerText = 0;
         }
         frames++;
 
@@ -255,10 +263,10 @@ function gameStart() {
     }, 1000)
 
     //----Create candies----
-    setTimeout(function () {
-        id = window.requestAnimationFrame(animate);
+    /*setTimeout(function () {
+        candyid = window.requestAnimationFrame(animate);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.createCandies();
-    }, 10);
+    }, 10);*/
 
 }

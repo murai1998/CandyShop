@@ -2,22 +2,48 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <button id='start'>Start</button>
-    <button id='finish'>Finish</button>
-    <div id='timer'>Remaining time: <span> </span> </div>
-    <div id='score'> Score: <span>0</span> </div>
-    <div>
-        <img id='heart' src='Images/heart.png' alt='heart' width="40" height="40" />
-        <img id='heart' src='Images/heart.png' alt='heart' width="40" height="40" />
-        <img id='heart' src='Images/heart.png' alt='heart' width="40" height="40" />
-    </div>
+    <article id='intro'>
+        <h1>Candy shop</h1>
+        <p>is a brain training game designed to improve math skills</p>
+        <p id='benefits'>
+            <h2>Rules:</h2>
+            <ul>
+                <li>
+                    <p>Solve the simple math exercise</p>
+                    <img src='Images/bulb.png' alt='bulb' width="100" height="100" />
+                </li>
+                <li>
+                    <p>Click on a candy with the right result </p>
+                    <img src='Images/math.png' alt='math' width="150" height="100" />
+                </li>
+                <li>
+                    <p>Do as many as possible tasks for certain time</p>
+                    <img src='Images/Clock.png' alt='clock' width="100" height="100" />
+                </li>
+            </ul>
 
-    <canvas id="canvas" width="800" height="600"></canvas></canvas>
 
+        </p>
+        <button id='start'>Start</button>
+    </article>
+    <article id='main'>
+        <button id='finish'>Finish</button>
+        <div id='timer'>Remaining time: <span> </span> </div>
+        <div id='score'> Score: <span>0</span> </div>
+        <div>
+            <img id='heart' src='Images/heart.png' alt='heart' width="40" height="40" />
+            <img id='heart' src='Images/heart.png' alt='heart' width="40" height="40" />
+            <img id='heart' src='Images/heart.png' alt='heart' width="40" height="40" />
+        </div>
 
+        <canvas id="canvas" width="800" height="600"></canvas></canvas>
+
+    </article>
 </body>
 <script src="script.js" async defer></script>
 

@@ -1,12 +1,73 @@
 body {
     overflow: hidden;
+    font-family: 'Concert One', cursive;
 }
+
+
 
 #timer,
 #score {
     font-size: 35px;
-    color: rgb(233, 218, 228);
-    text-shadow: 0 0 3px rgb(225, 148, 194), 0 0 5px rgb(201, 32, 150);
-    font-family: Marker Felt, fantasy;
+    color: white;
+    text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
 
+}
+
+
+
+#intro {
+    text-align: center;
+    padding: 30px 40px 30px 20px;
+    width: 40%;
+    background-color: rgb(245, 210, 237);
+
+}
+
+#intro h1,
+h2 {
+    color: white;
+    text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
+}
+
+h1 {
+
+    margin: 0;
+    font-size: 50px;
+}
+
+p {
+    font-size: 25px;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+h2 {
+    font-size: 35px;
+    text-decoration-line: underline;
+    text-align: left;
+}
+
+ul li {
+    width: 40%;
+    height: 250px;
+    background: pink;
+}
+
+
+ul li:nth-child(2) {
+    align-self: flex-end;
+    background: rgb(228, 160, 171);
+}
+
+button {
+    font-size: 35px;
+    padding: 15px 20px;
+    font-family: 'Concert One', cursive;
+    background-color: pink;
 }

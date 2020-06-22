@@ -2,7 +2,8 @@ body {
     overflow: hidden;
 }
 
-#timer {
+#timer,
+#score {
     font-size: 35px;
     color: rgb(233, 218, 228);
     text-shadow: 0 0 3px rgb(225, 148, 194), 0 0 5px rgb(201, 32, 150);

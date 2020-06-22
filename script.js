@@ -1,14 +1,16 @@
+const canvas = document.querySelector('#canvas');
+const ctx = canvas.getContext('2d');
+let id = null;
 let start = document.querySelector('#start');
 let finish = document.querySelector('#finish');
 start.onclick = gameStart;
-finish.onclick = () => {
+let score = 0
 
-}
+
+
+
 
 function gameStart() {
-    const canvas = document.querySelector('#canvas');
-    const ctx = canvas.getContext('2d');
-    let id = null;
     let frames = 1;
     let hearts = document.querySelectorAll('#heart');
     let timer = 90;
@@ -45,14 +47,12 @@ function gameStart() {
             candies,
             frames,
             id,
-            score,
             max,
             min
         }) {
             this.candies = candies
             this.frames = frames
             this.id = id
-            this.score = score
             this.max = max
             this.min = min
             this.lives = 3
@@ -148,10 +148,21 @@ function gameStart() {
         candies: [],
         frames: 1,
         id: null,
-        score: 0,
         max: 100,
         min: 0
     });
+
+    //========================ERASE==========================================================
+    function erase() {
+        document.querySelector('#score').remove();
+        clearInterval(id);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        music.pause();
+        music.src = ''
+    }
+    finish.onclick = erase
+
+
     //----Remove candies----
     canvas.addEventListener('mousedown', function (e) {
         const rect = canvas.getBoundingClientRect()
@@ -160,15 +171,14 @@ function gameStart() {
         game.candies.forEach(candy => {
             if (candy.x <= x && x <= candy.x + candy.width && candy.y <= y && y <= candy.y + candy.height) {
                 if (candy.num === game.result) {
+                    score += 50;
                     game.createCandies();
                 } else {
                     hearts[game.lives - 1].remove()
                     game.lives -= 1;
                     if (game.lives === 0) {
                         game.candies = [];
-                        music.pause();
-                        clearInterval(id);
-                        erase();
+                        erase()
                     } else {
                         alert(`Oops! Wrong answer!`);
                         game.createCandies();
@@ -214,16 +224,12 @@ function gameStart() {
         ctx.strokeStyle = 'white'
         ctx.strokeText(game.equipment, canvas.width / 2 - 72, canvas.height / 2 + 145);
 
-        if (game.candies[0].y >= canvas.height) {
-            hearts[game.lives - 1].remove()
+        if (game.candies[0] && game.candies[0].y >= canvas.height) {
+            if (game.lives - 1 >= 0) hearts[game.lives - 1].remove()
             game.lives -= 1;
-
-
-            if ((game.lives === 0) && (timer === 0)) {
+            if (((game.lives === 0) && (timer === 0)) || (finish.onclick)) {
                 game.candies = [];
-                music.pause();
-                clearInterval(id);
-                erase();
+                erase()
             } else {
                 alert(`Oops! Wrong answer!`);
                 game.createCandies();
@@ -231,16 +237,21 @@ function gameStart() {
         }
         game.drawCandies();
         game.removeCandy();
+        if (Number(frames) % 1000 === 0) {
+            document.querySelector('#score span').innerText = score
+        }
+        frames++;
 
     };
     //----Timer----
     id = setInterval(function () {
-        document.querySelector('#timer span').innerHTML = timer
-        timer--;
         if (timer === 0 || game.lives === 0) {
             document.querySelector('#timer').innerHTML = '0'
             document.querySelector('#timer').remove();
         }
+        document.querySelector('#timer span').innerHTML = timer
+        timer--;
+
     }, 1000)
 
     //----Create candies----
@@ -249,4 +260,5 @@ function gameStart() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.createCandies();
     }, 10);
+
 }

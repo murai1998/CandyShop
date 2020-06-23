@@ -6,7 +6,7 @@ let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 let id = null;
 let start = document.querySelector('#start');
-let restart = document.querySelector('#restart');
+//let restart = document.querySelector('#restart');
 let finish = document.querySelector('#finish');
 start.onclick = () => {
     document.querySelector('#intro').remove();

@@ -90,16 +90,11 @@ button {
     justify-content: space-between;
 }
 
-panel2 {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
 
 
 #main {
-    margin: 120px auto 0;
-    padding: 30px 40px 30px 20px;
+    margin: 120px auto;
+    padding: 30px 0 30px 100px;
     background-color: rgb(250, 241, 248);
     box-shadow: 20px 20px 20px rgb(245, 224, 240);
     border-radius: 35px;
@@ -113,10 +108,38 @@ panel2 {
     margin: auto 0 auto 30px;
 }
 
-#finish {
-    margin: auto 0 auto 100px;
-}
+
 
 #heart {
-    margin: 25px auto 0;
+    margin: 25px 2px;
+
+}
+
+#heartButton {
+    margin: auto auto;
+}
+
+#totalScore {
+    margin: 150px 100px;
+    font-size: 100px;
+    color: pink;
+    text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+}
+
+#totalScore strong {
+    color: black;
+}
+
+#finalPoint {
+    margin: 200px auto;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

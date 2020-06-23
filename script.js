@@ -1,7 +1,9 @@
 let main = document.querySelector('#main');
+let totalScore = document.querySelector('#totalScore')
 main.style.visibility = 'hidden';
-const canvas = document.querySelector('#canvas');
-const ctx = canvas.getContext('2d');
+totalScore.style.visibility = 'hidden';
+let canvas = document.querySelector('#canvas');
+let ctx = canvas.getContext('2d');
 let id = null;
 let start = document.querySelector('#start');
 let finish = document.querySelector('#finish');
@@ -179,11 +181,12 @@ function gameStart() {
     function erase() {
         document.querySelector('#score').remove();
         clearInterval(id);
-        //ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         music.pause();
         music.src = '';
-        //cancelAnimationFrame(candyid);
         cancelAnimationFrame(animateid);
+        document.querySelector('#main').remove()
+        totalScore.style.visibility = 'visible';
     }
     finish.onclick = erase
 
@@ -197,6 +200,7 @@ function gameStart() {
             if (candy.x <= x && x <= candy.x + candy.width && candy.y <= y && y <= candy.y + candy.height) {
                 if (candy.num === game.result) {
                     score += 50;
+                    document.querySelector('#totalScore strong').innerHTML = score;
                     game.createCandies();
                 } else {
                     hearts[game.lives - 1].remove()
@@ -245,8 +249,8 @@ function gameStart() {
         drawShop();
         ctx.font = "45px Concert One cursive";
         ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'white'
-        ctx.strokeText(game.equipment, canvas.width / 2 - 72, canvas.height / 2 + 145);
+        ctx.shadow = 'text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150)'
+        ctx.fillText(game.equipment, canvas.width / 2 - 72, canvas.height / 2 + 145);
         console.log("Hello");
         if (game.candies[0] && game.candies[0].y >= canvas.height) {
             if (game.lives - 1 >= 0) hearts[game.lives - 1].remove()
@@ -254,6 +258,7 @@ function gameStart() {
             if (((game.lives === 0) && (timer === 0)) || (finish.onclick)) {
                 game.candies = [];
                 erase()
+
             } else {
                 alert(`Oops! Wrong answer!`);
                 game.createCandies();

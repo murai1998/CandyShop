@@ -1,6 +1,16 @@
 body {
+    background-image: url('Images/decorated-background-with-confetti-curl-streamers/385309-PC0P8I-612.jpg');
+    background-position: 0 0;
+    background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
     font-family: 'Concert One', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1200px;
+
 }
 
 
@@ -16,12 +26,15 @@ body {
 
 
 #intro {
+    margin: 150px auto 0;
     text-align: center;
     padding: 30px 40px 30px 20px;
     width: 40%;
-    background-color: rgb(245, 210, 237);
-
+    background-color: rgb(250, 241, 248);
+    box-shadow: 20px 20px 20px rgb(245, 224, 240);
+    border-radius: 35px;
 }
+
 
 #intro h1,
 h2 {
@@ -70,4 +83,40 @@ button {
     padding: 15px 20px;
     font-family: 'Concert One', cursive;
     background-color: pink;
+}
+
+#panel {
+    display: flex;
+    justify-content: space-between;
+}
+
+panel2 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+
+#main {
+    margin: 120px auto 0;
+    padding: 30px 40px 30px 20px;
+    background-color: rgb(250, 241, 248);
+    box-shadow: 20px 20px 20px rgb(245, 224, 240);
+    border-radius: 35px;
+}
+
+#timeScore {
+    background-color: rgb(250, 241, 248);
+    box-shadow: 20px 20px 20px rgb(245, 224, 240);
+    display: flex;
+    flex-direction: column;
+    margin: auto 0 auto 30px;
+}
+
+#finish {
+    margin: auto 0 auto 100px;
+}
+
+#heart {
+    margin: 25px auto 0;
 }

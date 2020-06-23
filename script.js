@@ -1,3 +1,5 @@
+let main = document.querySelector('#main');
+main.style.visibility = 'hidden';
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
 let id = null;
@@ -5,9 +7,10 @@ let start = document.querySelector('#start');
 let finish = document.querySelector('#finish');
 start.onclick = () => {
     document.querySelector('#intro').remove();
+    main.style.visibility = 'visible';
     gameStart();
-
 }
+
 let score = 0
 let animateid = null;
 let candyid = null;
@@ -42,6 +45,21 @@ function gameStart() {
 
 
     shopImg.onload = animate;
+    let state = {
+        volume: true
+    }
+    let mute = document.querySelector('#mute');
+    mute.onclick = () => {
+        state.volume = !state.volume;
+        if (state.volume) {
+            music.play();
+            document.querySelector('#mute').innerHTML = `<img src='Images/volume.png' alt='clock' width="30" height="30" />`
+        } else {
+            music.pause();
+            document.querySelector('#mute').innerHTML = `<img src='Images/mute.png' alt='clock' width="30" height="30" />`
+        }
+
+    }
 
 
 
@@ -126,7 +144,7 @@ function gameStart() {
 
 
 
-    let max = 100; //will change later for different leves, It will go to the Game class
+    let max = 100;
     let min = 0;
     let operators = [{
             sign: '+',

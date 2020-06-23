@@ -6,6 +6,7 @@ let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 let id = null;
 let start = document.querySelector('#start');
+let restart = document.querySelector('#restart');
 let finish = document.querySelector('#finish');
 start.onclick = () => {
     document.querySelector('#intro').remove();
@@ -167,7 +168,18 @@ function gameStart() {
             }
         }
     ];
-
+    /*restart.onclick = () => {
+        let game = new Game({
+            candies: [],
+            frames: 1,
+            id: null,
+            max: 100,
+            min: 0
+        });
+        gameStart();
+        music.play();
+        game.createCandies();
+    }*/
     let game = new Game({
         candies: [],
         frames: 1,
@@ -190,6 +202,13 @@ function gameStart() {
     }
     finish.onclick = erase
 
+    function scoreRusult() {
+        if (score >= 0 && score <= 100) return document.querySelector('#resultRange').innerHTML = `Looks like you need more practice!!!`;
+        if (score > 100 && score <= 300) return document.querySelector('#resultRange').innerHTML = `I know you can do better than this!!!`;
+        if (score > 300 && score <= 500) return document.querySelector('#resultRange').innerHTML = `Good results!!! But there's always room for improvement`;
+        else return document.querySelector('#resultRange').innerHTML = `Excellent results!!!`;
+
+    }
 
     //----Remove candies----
     canvas.addEventListener('mousedown', function (e) {
@@ -201,16 +220,20 @@ function gameStart() {
                 if (candy.num === game.result) {
                     score += 50;
                     document.querySelector('#totalScore strong').innerHTML = score;
+                    console.log(score);
+                    scoreRusult()
                     game.createCandies();
                 } else {
                     hearts[game.lives - 1].remove()
                     game.lives -= 1;
                     if (game.lives === 0) {
                         game.candies = [];
+                        scoreRusult()
                         erase()
                     } else {
                         alert(`Oops! Wrong answer!`);
                         game.createCandies();
+                        scoreRusult()
                     }
 
                 }

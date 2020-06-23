@@ -120,7 +120,7 @@ button {
 }
 
 #totalScore {
-    margin: 150px 100px;
+    margin: 150px 100px auto;
     font-size: 100px;
     color: pink;
     text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
@@ -142,4 +142,8 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#resultRange {
+    font-size: 50px;
 }

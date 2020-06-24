@@ -136,8 +136,8 @@ button {
 }
 
 #finalPoint {
-    margin: 200px auto;
-    height: 600px;
+    margin: auto auto;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,4 +146,8 @@ button {
 
 #resultRange {
     font-size: 50px;
+}
+
+#canvas2 {
+    float: left;
 }

@@ -316,3 +316,43 @@ function gameStart() {
     }, 10);*/
 
 }
+
+
+
+let canvas2 = document.querySelector('#canvas2');
+let ctx2 = canvas2.getContext('2d');
+let img = new Image();
+img.src = '/Users/thatchampion/Desktop/Ironhack/CandyShop/Images/Firework.png'
+let height = 256;
+let counter = 0;
+let frame2 = 1;
+let num = 1
+
+
+canvas2.onmouseover = function animation2() {
+    id = window.requestAnimationFrame(animation2)
+    let modulo = Math.floor(counter % 5);
+    ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+    let x = 100;
+    let x2 = 200;
+    let y = 0;
+    let widthH = 300;
+    let heigthH = 300;
+    for (let i = 0; i < 3; i++) {
+        if (i % 2 === 0) {
+            ctx2.drawImage(img, 1024, height * modulo, 256, 256, x2, y + 30, widthH + 200, heigthH + 200);
+        }
+        ctx2.drawImage(img, 0, height * modulo, 256, 256, x, y, widthH, heigthH);
+        x += 400;
+        x2 += 200;
+    }
+
+    counter = counter + .03;
+
+    frame2++;
+    if (frame2 >= 6000) {
+        ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+        window.cancelAnimationFrame(animation2);
+    }
+
+}

@@ -93,9 +93,10 @@ function gameStart() {
             this.equipment = `${num1} ${sign} ${num2}`;
             let results = [];
             results.push(result);
-            results.push(result - 1);
-            results.push(result + 1);
-            results.push(result - 2);
+            let ranArr = generateArrayRandomNumber(1, 9)
+            results.push(result - ranArr[0]);
+            results.push(result + ranArr[1]);
+            results.push(result + ranArr[2]);
             results = shuffle(results);
             this.result = result;
             for (let i = 0, length = 5; i < name.length; i++) {
@@ -139,8 +140,8 @@ function gameStart() {
         drawCandy = () => {
             this.y += 1;
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-            ctx.fillText(this.num, this.x + 34, this.y + 70);
-            ctx.style
+            ctx.strokeText(this.num, this.x + 34, this.y + 70);
+
 
         }
     }
@@ -250,6 +251,24 @@ function gameStart() {
         ctx.drawImage(cartImage, canvas.width / 2 - 160, canvas.height / 2 + 68, 290, 140);
     }
 
+
+    function generateArrayRandomNumber(min, max) {
+        let totalNumbers = max - min + 1;
+        let arrayTotalNumbers = []
+        let arrayRandomNumbers = []
+        let tempRandomNumber;
+        while (totalNumbers--) {
+            arrayTotalNumbers.push(totalNumbers + min);
+        }
+        while (arrayTotalNumbers.length) {
+            tempRandomNumber = Math.round(Math.random() * (arrayTotalNumbers.length - 1));
+            arrayRandomNumbers.push(arrayTotalNumbers[tempRandomNumber]);
+            arrayTotalNumbers.splice(tempRandomNumber, 1);
+        }
+        return arrayRandomNumbers;
+    }
+
+
     //---Random array---
     function shuffle(array) {
         var currentIndex = array.length,
@@ -271,14 +290,15 @@ function gameStart() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawShop();
         ctx.font = "45px Concert One cursive";
-        ctx.fillStyle = 'white';
-        ctx.shadow = 'text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150)'
-        ctx.fillText(game.equipment, canvas.width / 2 - 72, canvas.height / 2 + 145);
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 4.5;
+        ctx.strokeText(game.equipment, canvas.width / 2 - 72, canvas.height / 2 + 145);
         console.log("Hello");
-        if (game.candies[0] && game.candies[0].y >= canvas.height) {
+        if (game.candies[0].y >= canvas.height) {
             if (game.lives - 1 >= 0) hearts[game.lives - 1].remove()
             game.lives -= 1;
-            if (((game.lives === 0) && (timer === 0)) || (finish.onclick)) {
+            console.log(game.lives)
+            if ((game.lives === 0) || (timer === 0)) {
                 game.candies = [];
                 erase()
 

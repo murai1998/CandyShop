@@ -1,153 +1,140 @@
 body {
-    background-image: url('Images/decorated-background-with-confetti-curl-streamers/385309-PC0P8I-612.jpg');
-    background-position: 0 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    font-family: 'Concert One', cursive;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 1200px;
-
+  background-image: url("Images/decorated-background-with-confetti-curl-streamers/385309-PC0P8I-612.jpg");
+  background-position: 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: "Concert One", cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1200px;
 }
-
-
 
 #timer,
 #score {
-    font-size: 35px;
-    color: white;
-    text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
-
+  font-size: 35px;
+  color: white;
+  text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
 }
-
-
 
 #intro {
-    margin: 150px auto 0;
-    text-align: center;
-    padding: 30px 40px 30px 20px;
-    width: 40%;
-    background-color: rgb(250, 241, 248);
-    box-shadow: 20px 20px 20px rgb(245, 224, 240);
-    border-radius: 35px;
+  margin: 150px auto 0;
+  text-align: center;
+  padding: 30px 40px 30px 20px;
+  width: 40%;
+  background-color: rgb(250, 241, 248);
+  box-shadow: 20px 20px 20px rgb(245, 224, 240);
+  border-radius: 35px;
 }
-
 
 #intro h1,
 h2 {
-    color: white;
-    text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
+  color: white;
+  text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
 }
 
 h1 {
-
-    margin: 0;
-    font-size: 50px;
+  margin: 0;
+  font-size: 50px;
 }
 
 p {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 ul {
-    text-decoration: none;
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 h2 {
-    font-size: 35px;
-    text-decoration-line: underline;
-    text-align: left;
+  font-size: 35px;
+  text-decoration-line: underline;
+  text-align: left;
 }
 
 ul li {
-    width: 40%;
-    height: 250px;
-    background: pink;
+  width: 40%;
+  height: 250px;
+  background: pink;
 }
 
-
 ul li:nth-child(2) {
-    align-self: flex-end;
-    background: rgb(228, 160, 171);
+  align-self: flex-end;
+  background: rgb(228, 160, 171);
 }
 
 button {
-    font-size: 35px;
-    padding: 15px 20px;
-    font-family: 'Concert One', cursive;
-    background-color: pink;
+  font-size: 35px;
+  padding: 15px 20px;
+  font-family: "Concert One", cursive;
+  background-color: pink;
 }
 
 #panel {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-
 #main {
-    margin: 120px auto;
-    padding: 30px 0 30px 100px;
-    background-color: rgb(250, 241, 248);
-    box-shadow: 20px 20px 20px rgb(245, 224, 240);
-    border-radius: 35px;
+  margin: 120px auto;
+  padding: 30px 0 30px 100px;
+  background-color: rgb(250, 241, 248);
+  box-shadow: 20px 20px 20px rgb(245, 224, 240);
+  border-radius: 35px;
 }
 
 #timeScore {
-    background-color: rgb(250, 241, 248);
-    box-shadow: 20px 20px 20px rgb(245, 224, 240);
-    display: flex;
-    flex-direction: column;
-    margin: auto 0 auto 30px;
+  background-color: rgb(250, 241, 248);
+  box-shadow: 20px 20px 20px rgb(245, 224, 240);
+  display: flex;
+  flex-direction: column;
+  margin: auto 0 auto 30px;
 }
 
-
-
 #heart {
-    margin: 25px 2px;
-
+  margin: 25px 2px;
 }
 
 #heartButton {
-    margin: auto auto;
+  margin: auto auto;
 }
 
 #totalScore {
-    margin: 150px 100px auto;
-    font-size: 100px;
-    color: pink;
-    text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin: 150px 100px auto;
+  font-size: 100px;
+  color: pink;
+  text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    justify-content: center;
+  justify-content: center;
 }
 
 #totalScore strong {
-    color: black;
+  color: black;
 }
 
 #finalPoint {
-    margin: auto auto;
+  margin: auto auto;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #resultRange {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 #canvas2 {
-    float: left;
+  float: left;
+  color: rgb(158, 30, 30);
 }

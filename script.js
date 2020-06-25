@@ -334,7 +334,7 @@ function gameStart() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.createCandies();
     }, 10);*/
-
+    return score;
 }
 
 
@@ -376,3 +376,41 @@ canvas2.onmouseover = function animation2() {
     }
 
 }
+
+
+
+const username = document.getElementById('username');
+const saveScoreBtn = document.getElementById('saveScoreBtn');
+//let total = document.querySelector('#score span').innerText
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+console.log(score);
+
+const MAX_HIGH_SCORES = 3;
+
+username.addEventListener('keyup', () => {
+    saveScoreBtn.disabled = !username.value;
+});
+console.log(finalScore.innerText);
+saveHighScore = (e) => {
+    e.preventDefault();
+    const score2 = {
+        score2: score,
+        name: username.value,
+    };
+    highScores.push(score2);
+    highScores.sort((a, b) => b.score2 - a.score2);
+    highScores.splice(3);
+
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    window.location.assign('/');
+};
+
+
+const highScoresList = document.querySelector("#highScoresList");
+
+
+highScoresList.innerHTML = highScores
+    .map(score2 => {
+        return `<li class="high-score">${score2.name.toUpperCase()} - ${score2.score2}</li>`;
+    })
+    .join("");

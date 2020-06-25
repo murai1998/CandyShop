@@ -52,8 +52,28 @@
         <p id='totalScore'>Your total score: <strong>0 </strong></p>
 
         <p id='resultRange'></p>
-        <button onClick="window.location.href=window.location.href" id='restart'>Restart</button>
-        <canvas id="canvas2" width="1300" height="700"></canvas>
+        <article id='resList'>
+
+            <div id='result'>
+                <div>
+                    <p><strong>Do not forget</strong> to save your result!</p>
+                    <form>
+                        <input type="text" name="username" id="username" placeholder="your_name" />
+                        <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>
+                            Save
+                        </button>
+                    </form>
+                </div>
+                <div id="highScores" class="flex-center flex-column">
+                    <p id="finalScore"><strong>High Scores</strong></p>
+                    <ol id="highScoresList"></ol>
+                </div>
+            </div>
+
+        </article>
+        </form>
+        <button id='restart' onClick="window.location.href=window.location.href" id='restart'>Restart</button>
+        <canvas id="canvas2" width="1300" height="500"></canvas>
 
 
 

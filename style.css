@@ -94,7 +94,7 @@ button {
   box-shadow: 20px 20px 20px rgb(245, 224, 240);
   display: flex;
   flex-direction: column;
-  margin: auto 0 auto 30px;
+  margin: 30px 0 auto 30px;
 }
 
 #heart {
@@ -106,7 +106,7 @@ button {
 }
 
 #totalScore {
-  margin: 150px 100px auto;
+  margin: 0 100px;
   font-size: 100px;
   color: pink;
   text-shadow: 0 0 3px rgb(63, 53, 59), 0 0 5px rgb(201, 32, 150);
@@ -122,19 +122,55 @@ button {
 }
 
 #finalPoint {
-  margin: auto auto;
-
+  margin: 40px auto 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#resultRange {
-  font-size: 50px;
+  justify-content: flex-start;
 }
 
 #canvas2 {
   float: left;
   color: rgb(158, 30, 30);
+}
+#result p {
+  font-size: 30px;
+  width: 250px;
+  text-align: center;
+}
+#result {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  font-size: 30px;
+}
+#result strong {
+  font-size: 35px;
+}
+#result input {
+  font-size: 30px;
+  height: 45px;
+  width: 250px;
+}
+form {
+  display: flex;
+}
+#resList {
+  display: flex;
+  justify-content: space-around;
+}
+#resList button {
+  font-size: 30px;
+  padding: 7px 15px;
+}
+#highScores strong {
+  font-size: 35px;
+}
+
+#restart {
+  font-size: 35px;
+  padding: 0;
+}
+#resultRange {
+  font-size: 40px;
+  text-align: center;
 }

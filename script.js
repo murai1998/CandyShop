@@ -342,7 +342,7 @@ function gameStart() {
 let canvas2 = document.querySelector('#canvas2');
 let ctx2 = canvas2.getContext('2d');
 let img = new Image();
-img.src = '/Users/thatchampion/Desktop/Ironhack/CandyShop/Images/Firework.png'
+img.src = 'Images/Firework.png'
 let height = 256;
 let counter = 0;
 let frame2 = 1;

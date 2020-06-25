@@ -402,7 +402,8 @@ saveHighScore = (e) => {
     highScores.splice(3);
 
     localStorage.setItem('highScores', JSON.stringify(highScores));
-    window.location.assign('/');
+    // window.location.assign('/Users/thatchampion/Desktop/Ironhack/CandyShop/index.html');
+    location.reload()
 };
 
 

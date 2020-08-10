@@ -1,5 +1,5 @@
 
-Candy shop” is a brain training game designed to improve math skills, it was created  by using canvas and DOM manipulation technologies
+"Candy shop” is a brain training game designed to improve math skills, it was created  by using canvas and DOM manipulation technologies
 Benefits:
 - [ ] Become more confident using mental math
 - [ ] Learn targeted strategies to do math more quickly 
